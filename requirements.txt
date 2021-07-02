@@ -1,0 +1,10 @@
+asgiref
+certifi==2021.5.30
+Django
+Faker
+psycopg2
+python-dateutil
+pytz
+six
+sqlparse
+text-unidecode==1.3
