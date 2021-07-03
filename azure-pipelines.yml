@@ -9,16 +9,20 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
+steps: 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
     python3 --version
     pip3 --version
+  displayName: 'Check Python and pip version'
+
+- script: |
+    echo 'Instal requirements from requirements.txt'
     pip3 install -r requirements.txt
+  displayName: 'Requirements installation'
+
+- script: |
+    echo 'Run tests'
     ./manage.py test
-    ls
-  displayName: 'Run a multi-line script'
+  displayName: 'Test'
+
+    
