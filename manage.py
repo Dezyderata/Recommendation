@@ -6,7 +6,10 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    settings_module = "movieRecommendation.production" if 'WEBSITE_HOSTNAME' in os.environ else 'movieRecommendation.settings'
+    if 'WEBSITE_HOSTNAME' in os.environ:
+        settings_module = "movieRecommendation.production"
+    else:
+        'movieRecommendation.settings'
     from pprint import pprint
     pprint(os.environ)
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
