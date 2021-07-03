@@ -27,7 +27,7 @@ steps:
 
 - script: |
     echo 'Run tests'
-    ./manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --no-imput
+    ./manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --no-input
   condition: succeededOrFailed()
   displayName: 'Test'
 
