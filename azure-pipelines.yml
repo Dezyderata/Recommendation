@@ -21,8 +21,18 @@ steps:
   displayName: 'Requirements installation'
 
 - script: |
+    echo 'Install unit tests reporting XMLTestRunner'
+    pip3 install unittest-xml-reporting
+  displayName: 'Unittest-xml-reporting installation'
+
+- script: |
     echo 'Run tests'
-    ./manage.py test
+    ./manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --no-imput
+  condition: succeededOrFailed()
   displayName: 'Test'
 
+- task: PublishTestResults@1
+  inputs:
+    testResultsFiles: "**/TEST-*.xml"
+    testRunTitle: 'Python'
     
