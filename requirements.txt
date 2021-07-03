@@ -8,3 +8,5 @@ pytz
 six
 sqlparse
 text-unidecode==1.3
+whitenoise
+psycopg2-binary
