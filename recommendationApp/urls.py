@@ -3,5 +3,7 @@ from recommendationApp import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('formpage/', views.form_user_view, name='form_name'),
+    path('login_page/', views.login_request, name='login_page'),
+    path('registration_page/', views.register_user, name='registration_page'),
+    path('main/', views.main, name='main')
 ]

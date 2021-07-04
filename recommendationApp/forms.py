@@ -4,7 +4,7 @@ from recommendationApp.models import User
 
 
 class UserForm(forms.ModelForm):
-    user_name = forms.CharField(validators=[validators.MinLengthValidator(3)])
+    username = forms.CharField(validators=[validators.MinLengthValidator(3)])
     password = forms.CharField(widget=forms.PasswordInput(),
                                validators=[validators.MinLengthValidator(8)])
     verify_password = forms.CharField(label="Repeat password",
@@ -27,6 +27,19 @@ class UserForm(forms.ModelForm):
         vpasswd = all_clean_data.clean().get('verify_password')
         if passwd != vpasswd:
             raise forms.ValidationError("Passwords doesn't match!")
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput())
+
+    class Meta:
+        model = User
+        fields = '__all__'
+        widgets = {
+        'password': forms.PasswordInput(),
+        }
+
 
 
 class MovieForm(forms.Form):
