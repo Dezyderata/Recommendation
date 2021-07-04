@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from recommendationApp import forms
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
+from recommendationApp.models import Movie
 
 # Create your views here.
 
@@ -15,7 +16,9 @@ def login_page(request):
 
 
 def main(request):
-    return render(request, 'recommendationApp/main.html')
+    movie_list = Movie.objects.order_by('movie_name')
+    data_dict = {'movies': movie_list}
+    return render(request, 'recommendationApp/main.html', context=data_dict)
 
 
 def register_user(request):
@@ -49,3 +52,9 @@ def login_request(request):
         messages.error(request, "Invalid username or password.")
     form = forms.LoginForm(request.POST)
     return render(request, 'recommendationApp/login_page.html', context={"login_form": form})
+
+
+def logout_request(request):
+    logout(request)
+    messages.info(request, "You have successfully logged out.")
+    return redirect('')
