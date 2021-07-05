@@ -11,7 +11,7 @@ pool:
 
 resources:
   pipelines:
-    - pipeline: Dezyderata.Recommendation
+    - pipeline: Test_pipeline
       trigger:
         branches:
         - master
