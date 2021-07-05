@@ -36,7 +36,14 @@
   </div>
 </nav>
     <h1>Hi {{ request.user.username }}</h1>
+        <h3>Please add movie here:</h3>
+        <form class="login_form_class" method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="submit" name="btn btn-primary" value="submit">
+        </form>
     <div>
+        <h3>Your movies list:</h3>
         {% if movies %}
             <form>
             <table>

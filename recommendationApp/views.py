@@ -21,6 +21,20 @@ def main(request):
     return render(request, 'recommendationApp/main.html', context=data_dict)
 
 
+def add_movie(request):
+    form = forms.MovieForm()
+    if request.method == 'POST':
+        print('blabla')
+        form = forms.MovieForm(request.POST)
+        if form.is_valid():
+            print('lalala')
+            form.save(commit=True)
+            return redirect('/main/')
+        else:
+            print('ERROR, form invalid!')
+    return render(request, 'recommendationApp/main.html', {'form': form})
+
+
 def register_user(request):
     form = forms.UserForm()
     #success_url = '/'

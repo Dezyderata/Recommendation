@@ -6,7 +6,7 @@ from recommendationApp.models import Movie, User, Rating
 class MovieTestCase(TestCase):
 
     def test_movie_str(self):
-        first_movie = Movie.objects.create(movie_name="Scary Movie")
+        first_movie = Movie.objects.create(title="Scary Movie")
         self.assertEqual(first_movie.__str__(), "Scary Movie")
 
 

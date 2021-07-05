@@ -5,10 +5,11 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Movie(models.Model):
-    movie_name = models.CharField(max_length=256, unique=True, null=False, blank=False)
+    title = models.CharField(max_length=256, unique=True, null=False, blank=False)
+    opinion = models.TextField(max_length=1000, null=False, blank=False)
 
     def __str__(self):
-        return self.movie_name
+        return self.title
 
 
 class User(models.Model):

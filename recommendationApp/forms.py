@@ -1,6 +1,6 @@
 from django import forms
 from django.core import validators
-from recommendationApp.models import User
+from recommendationApp.models import User, Movie
 
 
 class UserForm(forms.ModelForm):
@@ -41,11 +41,13 @@ class LoginForm(forms.Form):
         }
 
 
-
-class MovieForm(forms.Form):
+class MovieForm(forms.ModelForm):
     title = forms.CharField(validators=[validators.MinLengthValidator(1)])
-    rate = forms.IntegerField(validators=[validators.MaxValueValidator(5),
-                                          validators.MinValueValidator(1)])
+    opinion = forms.Textarea()
     botcatcher = forms.CharField(required=False,
                                  widget=forms.HiddenInput,
                                  validators=[validators.MaxLengthValidator(0)])
+
+    class Meta:
+        model = Movie
+        fields = '__all__'
