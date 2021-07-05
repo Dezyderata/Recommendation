@@ -4,11 +4,18 @@
 # https://aka.ms/yaml
 
 trigger:
-- master
+- none
 
 pool:
   vmImage: ubuntu-latest
 
+resources:
+  pipelines:
+    - pipeline: Dezyderata.Recommendation
+      trigger:
+        branches:
+        - master
+          
 steps: 
 - script: | 
     git  push -f "https://$DEPLOYMENT_USER:$DEPLOYMENT_PASS@$DEPLOYMENT_URL" HEAD:refs/heads/master
