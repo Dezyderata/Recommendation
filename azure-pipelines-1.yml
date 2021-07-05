@@ -11,7 +11,7 @@ pool:
 
 steps: 
 - script: | 
-    git  push -f "https://$DEPLOYMENT_USRE:$DEPLOYMENT_PASS@DEPLOYMENT_URL" HEAD:master
+    git  push -f "https://$DEPLOYMENT_USRE:$DEPLOYMENT_PASS@$DEPLOYMENT_URL" HEAD:master
   env:
     DEPLOYMENT_URL: $(DEPLOYMENT_URL)
     DEPLOYMENT_USER: $(DEPLOYMENT_USER)
