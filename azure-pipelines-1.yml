@@ -12,6 +12,7 @@ pool:
 resources:
   pipelines:
     - pipeline: Test_pipeline
+      source: 'Test_pipeline'
       trigger:
         branches:
         - master
