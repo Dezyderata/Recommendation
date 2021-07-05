@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="#">Welcome, {{user.username}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/">Logout</a>
+      </li>
+      {% else %}
+
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+<h1>You logout successful</h1>
+</body>
+</html>

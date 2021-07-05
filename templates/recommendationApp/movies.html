@@ -17,17 +17,15 @@
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       {% if user.is_authenticated %}
-      <li class="nav-item">
-        <a class="nav-link" href="#">Welcome, {{user.username}}</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/add_movie">Add movie</a>
-      </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Welcome, {{user.username}}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/main">Your movies</a>
+        </li>
         <li class="nav-item">
             <a class="nav-link" onclick="location.href={% url 'logout'%}">Logout</a>
         </li>
-
-
       {% else %}
 
       <li class="nav-item">
@@ -39,26 +37,11 @@
   </div>
 </nav>
     <h1>Hi {{ request.user.username }}</h1>
-    <div>
-        <h3>Your movies list:</h3>
-        {% if movies %}
-            <form>
-            <table>
-                <thead>
-                    <th>Title</th>
-                    <th>Opinion</th>
-                </thead>
-                {% for movie in movies %}
-                    <tr>
-                        <td>{{ movie.title }}</td>
-                        <td>{{ movie.opinion }}</td>
-                    </tr>
-                {% endfor %}
-            </table>
-            </form>
-        {% else %}
-            <p>No movies found!</p>
-        {% endif %}
-    </div>
+        <h3>Please add movie here:</h3>
+        <form class="login_form_class" method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="submit" name="btn btn-primary" value="submit">
+        </form>
 </body>
 </html>

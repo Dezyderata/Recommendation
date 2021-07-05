@@ -16,7 +16,7 @@ def login_page(request):
 
 
 def main(request):
-    movie_list = Movie.objects.order_by('movie_name')
+    movie_list = Movie.objects.order_by('title')
     data_dict = {'movies': movie_list}
     return render(request, 'recommendationApp/main.html', context=data_dict)
 
@@ -24,15 +24,13 @@ def main(request):
 def add_movie(request):
     form = forms.MovieForm()
     if request.method == 'POST':
-        print('blabla')
         form = forms.MovieForm(request.POST)
         if form.is_valid():
-            print('lalala')
             form.save(commit=True)
             return redirect('/main/')
         else:
             print('ERROR, form invalid!')
-    return render(request, 'recommendationApp/main.html', {'form': form})
+    return render(request, 'recommendationApp/movies.html', {'form': form})
 
 
 def register_user(request):
@@ -71,4 +69,4 @@ def login_request(request):
 def logout_request(request):
     logout(request)
     messages.info(request, "You have successfully logged out.")
-    return redirect('')
+    return redirect('/')
