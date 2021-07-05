@@ -28,3 +28,7 @@ az webapp config appsettings set \
     DBUSER=$DB_USER_NAME \
     DBPASS=$DB_PASS \
   --resource-group $RG_NAME
+
+az webapp deployment user set \
+  --user-name $USER \
+  --password $PASS
