@@ -19,7 +19,7 @@ resources:
           
 steps: 
 - script: | 
-    git  push -f "https://$DEPLOYMENT_USER:$DEPLOYMENT_PASS@$DEPLOYMENT_URL" HEAD:refs/heads/master
+    git  push -f "https://$DEPLOYMENT_USER:$DEPLOYMENT_PASS@$DEPLOYMENT_URL" HEAD:master
   env:
     DEPLOYMENT_URL: $(DEPLOYMENT_URL)
     DEPLOYMENT_USER: $(DEPLOYMENT_USER)
